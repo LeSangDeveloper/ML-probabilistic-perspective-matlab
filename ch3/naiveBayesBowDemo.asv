@@ -1,0 +1,15 @@
+if 1
+   loadData('XwindowsDocData');
+   Xtrain = xtrain; Xtest = xtest;
+else
+    loadData('20news_w100');
+    X = shuffleRows(documents');
+    Xtrain = X(1:60, :);
+    Xtest = X(61:end,:);
+end
+
+model = naiveBayesFit(Xtrain, ytrain);
+y_pred_train = naiveBayesPredict(model, Xtrain);
+err_train = mean(zeroOneLossFn(ytrain, y_pred_train));
+y_pred_test = naiveBayesPredict(model, Xtest);
+err_test = mean(zeroOneLossFn(ytest, y_pred_train));
