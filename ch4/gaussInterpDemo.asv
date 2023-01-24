@@ -1,0 +1,8 @@
+setSeed(1);
+D = 150;
+Nobs = 10;
+xs = linspace(0, 1, D);
+perm = randperm(D);
+obsNdx = perm(1:Nobs);
+hidNdx = setdiff(1:D, obsNdx);
+xobs = randn(Nobs, 1)
